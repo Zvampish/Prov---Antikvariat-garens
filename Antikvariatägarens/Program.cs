@@ -6,7 +6,13 @@ namespace Antikvariatägarens
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Book newBook = new Book();
+
+            newBook.PrintInfo();
+
+            newBook.Evaluate();
+
+            Console.ReadLine();
         }
     }
 }

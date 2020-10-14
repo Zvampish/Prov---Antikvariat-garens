@@ -16,8 +16,10 @@ namespace Antikvariatägarens
 
         public Book()
         {
-            actualValue = generator.Next();
-            rarity = generator.Next();
+            //Jag bregränsade actualValue till $10 eftersom det är ett rimligt pris för en bok 
+            actualValue = generator.Next(1, 11);
+            //Begränsade även rarity så att man kan namnge de tre olika rarities till t.ex common, ucommon och epic.
+            rarity = generator.Next(1, 4);
 
             int cursedInt = generator.Next(0, 2);
             
@@ -63,23 +65,28 @@ namespace Antikvariatägarens
                 category = bookCategories[2];
             }
         }
-
-        public void Printinfo()
+        //Nedan skriver PrintInfo() ut namnet på boken, kategorin, sällsyntheten och det faktiska värdet.
+        public void PrintInfo()
         {
-            
+            Console.WriteLine("The book is named " + name + "." +
+            "\nThe category is " + category + "." +
+            "\nThe rarity of the book is " + rarity + ". (The higher rarity, the better! The greatest rarity is 3, whist the lowest is 1)" +
+            "\nThe book costs $" + actualValue + ".");
             
         }
         public void Evaluate()
         {
-
+            //Vet inte hur jag ska lägga till det som står i nästa kommentar så jag skippar det.
+            //"Sedan slumpas värdet som ska returneras mellan 50% och 150% av "rätt pris"."
+            price = actualValue *= rarity;
         }
-        public void GetCategory()
+        public string GetCategory()
         {
-
+            return category;
         }
-        public void GetName()
+        public string GetName()
         {
-
+            return name;
         }
         public void IsCursed()
         {
