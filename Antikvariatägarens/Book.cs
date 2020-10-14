@@ -90,7 +90,19 @@ namespace Antikvariatägarens
         }
         public void IsCursed()
         {
+            /*För att skapa en 20% chans att cursed går från true till false eller vice versa
+            gjorde jag en generator som slumpar mellan 5 tal och om det är ett bestämt tal av de (i det 
+            här fallet 0) byter den cursed, men om det blir något annat än 0 så ändrar den inget.*/
+            int cursedFactor = generator.Next(0, 6);
 
+            if(cursed == true && cursedFactor == 0)
+            {
+                cursed = false;
+            }
+            else if(cursed == false && cursedFactor == 0)
+            {
+                cursed = true;
+            }
         }
 
     }
